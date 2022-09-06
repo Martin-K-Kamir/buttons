@@ -1,8 +1,8 @@
 
 .cut-corners-border .btn {
-	--surface        : hsl(241, 96%, 72%);
-	--surface-border : hsla(0, 0%, 100%, 0.3);
-	--text           : hsla(0, 0%, 100%, 0.7);
+	--clr-border     : hsla(0, 0%, 100%, 0.3);
+	--clr-background : hsl(241, 96%, 72%);
+	--clr-text       : hsla(0, 0%, 100%, 0.7);
 
 	display          : inline-grid;
 	place-items      : center;
@@ -11,8 +11,8 @@
 	height           : 56px;
 
 	&:hover {
-		--text    : hsl(0, 0%, 100%);
-		--surface : hsl(241, 100%, 69%);
+		--clr-text       : hsl(0, 0%, 100%);
+		--clr-background : hsl(241, 100%, 69%);
 	}
 }
 
@@ -27,8 +27,8 @@
 	line-height      : 1;
 	letter-spacing   : 0.055em;
 	text-transform   : uppercase;
-	color            : var(--text);
-	background-color : var(--surface);
+	color            : var(--clr-text);
+	background-color : var(--clr-background);
 	transition       : 150ms;
 }
 
@@ -40,7 +40,7 @@
 	height      : inherit;
 
 	position    : absolute;
-	border      : 1px solid var(--surface-border);
+	border      : 1px solid var(--clr-border);
 	transition  : clip-path 150ms 0ms;
 	clip-path   : polygon(
 					var(--edge-size) 0%,
@@ -70,7 +70,7 @@
 		display          : block;
 		opacity          : 1;
 		transition-delay : 70ms;
-		background-color : var(--surface-border);
+		background-color : var(--clr-border);
 	}
 
 	&::before {
