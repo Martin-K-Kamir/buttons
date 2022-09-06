@@ -76,8 +76,8 @@ body {
   height: 56px;
 }
 .cut-corners-border .btn:hover {
-  --text: hsl(0, 0%, 100%);
-  --background: hsl(241, 100%, 69%);
+  --clr-text: hsl(0, 0%, 100%);
+  --clr-background: hsl(241, 100%, 69%);
 }
 
 .cut-corners-border .btn .content {
