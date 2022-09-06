@@ -1,0 +1,87 @@
+
+.cut-corners-border .btn {
+	--surface        : hsl(241, 96%, 72%);
+	--surface-border : hsla(0, 0%, 100%, 0.3);
+	--text           : hsla(0, 0%, 100%, 0.7);
+
+	display          : inline-grid;
+	place-items      : center;
+
+	width            : 195px;
+	height           : 56px;
+
+	&:hover {
+		--text    : hsl(0, 0%, 100%);
+		--surface : hsl(241, 100%, 69%);
+	}
+}
+
+.cut-corners-border .btn .content {
+	display          : grid;
+	place-items      : center;
+	height           : calc(100% - 8px);
+	width            : calc(100% - 8px);
+	font-family      : 'Montserrat', sans-serif;
+	font-size        : 1.3rem;
+	font-weight      : 400;
+	line-height      : 1;
+	letter-spacing   : 0.055em;
+	text-transform   : uppercase;
+	color            : var(--text);
+	background-color : var(--surface);
+	transition       : 150ms;
+}
+
+
+.cut-corners-border .btn .border {
+	--edge-size : 1.3em;
+
+	width       : inherit;
+	height      : inherit;
+
+	position    : absolute;
+	border      : 1px solid var(--surface-border);
+	transition  : clip-path 150ms 0ms;
+	clip-path   : polygon(
+					var(--edge-size) 0%,
+					100% 0,
+					100% calc(100% - var(--edge-size)),
+					calc(100% - var(--edge-size)) 100%,
+					0 100%,
+					0% var(--edge-size)
+	);
+
+	&:hover {
+		--edge-size : 0%;
+
+		&::after,
+		&::before, {
+			transition-delay : 0ms;
+			opacity          : 0;
+		}
+	}
+
+	&::before,
+	&::after {
+		content          : "";
+		position         : absolute;
+		inline-size      : var(--edge-size);
+		aspect-ratio     : 1 / 1;
+		display          : block;
+		opacity          : 1;
+		transition-delay : 70ms;
+		background-color : var(--surface-border);
+	}
+
+	&::before {
+		top       : -0.3px;
+		left      : -0.3px;
+		clip-path : polygon(0 0, 0% 100%, 100% 0);
+	}
+
+	&::after {
+		bottom    : 0;
+		right     : -0.5px;
+		clip-path : polygon(100% 0, 0% 100%, 100% 100%);
+	}
+}

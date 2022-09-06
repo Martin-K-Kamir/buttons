@@ -1,0 +1,33 @@
+
+.cut-corners .btn {
+	--background     : #d0a85c;
+	--color          : white;
+	--edge-size      : 1.1em;
+
+	font-family      : 'Roboto', sans-serif;
+	font-size        : 1rem;
+	font-weight      : 500;
+	line-height      : 1;
+	letter-spacing   : 0.095em;
+	text-transform   : uppercase;
+	color            : var(--color);
+	background-color : var(--background);
+	transition       : clip-path 150ms ease;
+	display          : flex;
+	align-items      : center;
+	justify-content  : center;
+	inline-size      : 22rem;
+	min-block-size   : 3.15rem;
+	clip-path        : polygon(
+					var(--edge-size) 0%,
+					100% 0,
+					100% calc(100% - var(--edge-size)),
+					calc(100% - var(--edge-size)) 100%,
+					0 100%,
+					0% var(--edge-size)
+	);
+
+	&:hover {
+		--edge-size : 0%;
+	}
+}

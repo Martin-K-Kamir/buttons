@@ -1,0 +1,422 @@
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Commissioner:wght@400;800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: system-ui;
+}
+
+.container {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  background-color: var(--background, #222222);
+  display: grid;
+  place-items: center;
+}
+
+.order {
+  user-select: none;
+  position: absolute;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 90rem;
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0.03);
+}
+
+.btn {
+  cursor: pointer;
+  z-index: 2;
+  background-color: transparent;
+  border: 0;
+}
+
+.cut-corners .btn {
+  --background: #d0a85c;
+  --color: white;
+  --edge-size: 1.1em;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.095em;
+  text-transform: uppercase;
+  color: var(--color);
+  background-color: var(--background);
+  transition: clip-path 150ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 22rem;
+  min-block-size: 3.15rem;
+  clip-path: polygon(var(--edge-size) 0%, 100% 0, 100% calc(100% - var(--edge-size)), calc(100% - var(--edge-size)) 100%, 0 100%, 0% var(--edge-size));
+}
+.cut-corners .btn:hover {
+  --edge-size: 0%;
+}
+
+.cut-corners-border .btn {
+  --surface: hsl(241, 96%, 72%);
+  --surface-border: hsla(0, 0%, 100%, 0.3);
+  --text: hsla(0, 0%, 100%, 0.7);
+  display: inline-grid;
+  place-items: center;
+  width: 195px;
+  height: 56px;
+}
+.cut-corners-border .btn:hover {
+  --text: hsl(0, 0%, 100%);
+  --surface: hsl(241, 100%, 69%);
+}
+
+.cut-corners-border .btn .content {
+  display: grid;
+  place-items: center;
+  height: calc(100% - 8px);
+  width: calc(100% - 8px);
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+  color: var(--text);
+  background-color: var(--surface);
+  transition: 150ms;
+}
+
+.cut-corners-border .btn .border {
+  --edge-size: 1.3em;
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  border: 1px solid var(--surface-border);
+  transition: clip-path 150ms 0ms;
+  clip-path: polygon(var(--edge-size) 0%, 100% 0, 100% calc(100% - var(--edge-size)), calc(100% - var(--edge-size)) 100%, 0 100%, 0% var(--edge-size));
+}
+.cut-corners-border .btn .border:hover {
+  --edge-size: 0%;
+}
+.cut-corners-border .btn .border:hover::after, .cut-corners-border .btn .border:hover::before {
+  transition-delay: 0ms;
+  opacity: 0;
+}
+.cut-corners-border .btn .border::before, .cut-corners-border .btn .border::after {
+  content: "";
+  position: absolute;
+  inline-size: var(--edge-size);
+  aspect-ratio: 1/1;
+  display: block;
+  opacity: 1;
+  transition-delay: 70ms;
+  background-color: var(--surface-border);
+}
+.cut-corners-border .btn .border::before {
+  top: -0.3px;
+  left: -0.3px;
+  clip-path: polygon(0 0, 0% 100%, 100% 0);
+}
+.cut-corners-border .btn .border::after {
+  bottom: 0;
+  right: -0.5px;
+  clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+}
+
+.neon.container {
+  --background: #111111;
+}
+
+.neon .btn {
+  --color: hsl(111, 100%, 54%);
+  position: relative;
+  padding: 0.25em 1em;
+  font-family: "Montserrat", sans-serif;
+  font-size: 3rem;
+  text-shadow: 0 0 0.125em currentColor, 0 0 0.45em rgba(255, 255, 255, 0.25);
+  color: var(--color);
+  box-shadow: inset 0 0 0.35em 0 currentColor, 0 0 0.35em 0 currentColor;
+  border: 3px solid;
+  border-radius: 0.25em;
+  transition: all 60ms linear;
+}
+.neon .btn:hover, .neon .btn:focus-visible {
+  text-shadow: 0 0 0.3em currentColor, 0 0 0.6em rgba(255, 255, 255, 0.45);
+  box-shadow: inset 0 0 1em 0 currentColor, 0 0 0.7em 0 currentColor;
+}
+.neon .btn:hover::before, .neon .btn:focus-visible::before {
+  opacity: 0.9;
+}
+.neon .btn::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background-color: var(--color);
+  opacity: 0.6;
+  transition: all 60ms linear;
+  transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+  inline-size: 100%;
+  block-size: 100%;
+  filter: blur(1.5em);
+}
+
+.delete-item.container {
+  --background: whitesmoke;
+}
+
+.button {
+  --background: #2b3044;
+  --background-hover: #1e2235;
+  --check: #ffffff;
+  --check-background: #5c86ff;
+  --paper: #5c86ff;
+  --paper-lines: #ffffff;
+  --shadow: rgba(0, 9, 61, .2);
+  --text: #ffffff;
+  --trash: #e1e6f9;
+  --trash-lines: #bbc1e1;
+  cursor: pointer;
+  position: relative;
+  padding: 10px 24px;
+  min-width: 142px;
+  color: var(--text);
+  background: none;
+  background: var(--btn, var(--background));
+  box-shadow: 0 var(--shadow-y, 4px) var(--shadow-blur, 8px) var(--shadow);
+  border: none;
+  border-radius: 7px;
+  outline: none;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  transform: scale(var(--scale, 1));
+  display: flex;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.button span {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 25px;
+  opacity: var(--span-opacity, 1);
+  transition: transform 0.4s ease var(--span-delay, 0.2s), opacity 0.3s ease var(--span-delay, 0.2s);
+  transform: translateX(var(--span-x, 0)) translateZ(0);
+  display: block;
+}
+.button .trash {
+  position: relative;
+  left: -8px;
+  transition: transform 0.5s;
+  transform: translate(var(--trash-x, 0), var(--trash-y, 1px)) translateZ(0) scale(var(--trash-scale, 0.64));
+  display: block;
+}
+.button .trash:before, .button .trash:after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  width: 2px;
+  height: 8px;
+  background: var(--icon, var(--trash));
+  border-radius: 1px;
+  transition: transform 0.4s, background 0.3s;
+  transform: translate(var(--x, 3px), 2px) scaleY(var(--sy, 0.7)) rotate(var(--r, 0deg));
+  transform-origin: 50% 6px;
+}
+.button .trash:before {
+  left: 1px;
+}
+.button .trash:after {
+  --x: -3px;
+  right: 1px;
+}
+.button .trash .top {
+  position: absolute;
+  z-index: 1;
+  right: -4px;
+  bottom: 100%;
+  left: -4px;
+  overflow: hidden;
+  height: 40px;
+  transform: translateY(2px);
+}
+.button .trash .top:before, .button .trash .top:after {
+  content: "";
+  position: absolute;
+  bottom: var(--b, 5px);
+  left: var(--l, 8px);
+  width: var(--w, 12px);
+  height: var(--h, 2px);
+  background: var(--icon, var(--trash));
+  border-radius: 1px;
+  transition: background 0.3s, transform 0.4s;
+}
+.button .trash .top:after {
+  --b: 0;
+  --h: 2px;
+  --l: 0;
+  --w: 28px;
+  transform: scaleX(var(--trash-line-scale, 1));
+}
+.button .trash .top .paper {
+  position: absolute;
+  bottom: 0;
+  left: 7px;
+  width: 14px;
+  height: 18px;
+  background: var(--paper);
+  opacity: 0;
+  border-radius: 1px;
+  transform: translateY(-16px);
+}
+.button .trash .top .paper:before, .button .trash .top .paper:after {
+  content: "";
+  position: absolute;
+  top: var(--t, 2px);
+  left: 2px;
+  width: var(--w, 10px);
+  height: 2px;
+  background: var(--paper-lines);
+  box-shadow: 0 9px 0 var(--paper-lines);
+  border-radius: 1px;
+  transform: scaleY(0.7);
+}
+.button .trash .top .paper:after {
+  --t: 5px;
+  --w: 7px;
+}
+.button .trash .box {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  width: 20px;
+  height: 25px;
+  border: 2px solid var(--icon, var(--trash));
+  border-radius: 1px 1px 4px 4px;
+  transition: border-color 0.3s;
+}
+.button .trash .box:before, .button .trash .box:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: var(--l, 50%);
+  width: 4px;
+  height: var(--h, 20px);
+  background: var(--b, var(--trash-lines));
+}
+.button .trash .box:before {
+  margin-left: -2px;
+  opacity: var(--trash-lines-opacity, 1);
+  box-shadow: 10px 0 0 var(--trash-lines);
+  border-radius: 2px;
+  transition: transform 0.4s, opacity 0.4s;
+  transform: translateX(-3px) scale(0.6);
+}
+.button .trash .box:after {
+  --b: var(--paper);
+  --h: 16px;
+  --l: 1px;
+  box-shadow: 7px 0 0 var(--paper), 14px 0 0 var(--paper), 21px 0 0 var(--paper);
+  transform: translate(-0.5px, -16px) scaleX(0.5);
+}
+.button .trash .check {
+  position: absolute;
+  top: 24px;
+  left: 2px;
+  padding: 4px 3px;
+  background: var(--check-background);
+  opacity: var(--check-opacity, 0);
+  border-radius: 50%;
+  transition: transform var(--check-duration, 0.2s) ease var(--check-delay, 0s), opacity var(--check-duration-opacity, 0.2s) ease var(--check-delay, 0s);
+  transform: translateY(var(--check-y, 0)) scale(var(--check-scale, 0.2));
+}
+.button .trash .check svg {
+  width: 8px;
+  height: 6px;
+  transition: stroke-dashoffset 0.4s ease var(--checkmark-delay, 0.4s);
+  display: block;
+  fill: none;
+  stroke-width: 1.5;
+  stroke-dasharray: 9px;
+  stroke-dashoffset: var(--check-offset, 9px);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: var(--check);
+}
+.button.delete {
+  --check-delay: 1.7s;
+  --check-duration: .55s;
+  --check-duration-opacity: .3s;
+  --check-offset: 0;
+  --check-opacity: 1;
+  --check-scale: 1;
+  --check-y: 16px;
+  --checkmark-delay: 2.1s;
+  --icon: #ffffff;
+  --span-delay: 0s;
+  --span-opacity: 0;
+  --span-x: 16px;
+  --trash-line-scale: 0;
+  --trash-lines-opacity: 0;
+  --trash-scale: 1;
+  --trash-x: 46px;
+  --trash-y: 2px;
+}
+.button.delete .trash:before, .button.delete .trash:after {
+  --sy: 1;
+  --x: 0;
+}
+.button.delete .trash:before {
+  --r: 40deg;
+}
+.button.delete .trash:after {
+  --r: -40deg;
+}
+.button.delete .trash .top .paper {
+  animation: paper 1.5s linear forwards 0.5s;
+}
+.button.delete .trash .box:after {
+  animation: cut 1.5s linear forwards 0.5s;
+}
+.button.delete, .button:hover {
+  --btn: var(--background-hover);
+  --shadow-blur: 9px;
+  --shadow-y: 5px;
+}
+.button:active {
+  --scale: .94;
+  --shadow-blur: 5px;
+  --shadow-y: 2px;
+}
+
+@keyframes paper {
+  10%, 100% {
+    opacity: 1;
+  }
+  20% {
+    transform: translateY(-16px);
+  }
+  40% {
+    transform: translateY(0);
+  }
+  70%, 100% {
+    transform: translateY(24px);
+  }
+}
+@keyframes cut {
+  0%, 40% {
+    transform: translate(-0.5px, -16px) scaleX(0.5);
+  }
+  100% {
+    transform: translate(-0.5px, 24px) scaleX(0.5);
+  }
+}
