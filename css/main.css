@@ -216,7 +216,7 @@ button {
   --f-family: "Montserrat";
   --f-size: 3rem;
   --clr-background: transpartent;
-  --clr-color: hsl(111, 100%, 54%);
+  --clr-text: hsl(111, 100%, 54%);
   position: relative;
   padding: 0.25em 1em;
   border: 3px solid;
@@ -240,7 +240,7 @@ button {
   left: 0;
   inline-size: 100%;
   block-size: 100%;
-  background-color: var(--clr-color);
+  background-color: var(--clr-text);
   opacity: 0.6;
   filter: blur(1.5em);
   transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
