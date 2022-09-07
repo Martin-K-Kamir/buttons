@@ -1,14 +1,14 @@
 
 .cut-corners-border button {
 	--f-family       : 'Montserrat';
-	--f-size         : 1.3rem;
+	--f-size         : 1.4rem;
 	--f-weight       : 400;
 	--f-spacing      : 0.055em;
 	--clr-border     : hsla(0, 0%, 50%, 0.7);
 	--clr-text       : hsla(0, 0%, 100%, 0.8);
 	--clr-background : hsl(241, 96%, 72%);
 	--border-space   : -0.35em;
-	--border-edge    : 1.5em;
+	--border-edge    : 1.8em;
 
 	position         : relative;
 	display          : inline-grid;
@@ -32,9 +32,8 @@
 	}
 
 	.content {
-		padding        : 1.5em 4em;
+		padding        : 1.3em 3.5em;
 		text-transform : uppercase;
-		color          : var(--clr-text);
 		transition     : inherit;
 	}
 

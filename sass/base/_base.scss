@@ -21,6 +21,7 @@ body {
 }
 
 .order {
+	position    : absolute;
 	user-select : none;
 	font-family : 'Share Tech Mono', monospace;
 	font-size   : 90rem;
@@ -33,7 +34,7 @@ button {
 	font-size        : var(--f-size, 1rem);
 	font-weight      : var(--f-weight, 400);
 	letter-spacing   : var(--f-spacing, 0);
-	color            : var(--clr-color);
+	color            : var(--clr-text);
 	background-color : var(--clr-background);
 	line-height      : 1;
 }

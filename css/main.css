@@ -110,6 +110,7 @@ body {
 }
 
 .order {
+  position: absolute;
   user-select: none;
   font-family: "Share Tech Mono", monospace;
   font-size: 90rem;
@@ -122,24 +123,24 @@ button {
   font-size: var(--f-size, 1rem);
   font-weight: var(--f-weight, 400);
   letter-spacing: var(--f-spacing, 0);
-  color: var(--clr-color);
+  color: var(--clr-text);
   background-color: var(--clr-background);
   line-height: 1;
 }
 
 .cut-corners button {
   --f-family: "Roboto";
-  --f-size: 1rem;
+  --f-size: 1.rem;
   --f-weight: 500;
   --f-spacing: 0.095em;
   --clr-background: hsl(39, 55%, 59%);
-  --clr-color: hsl(0, 0%, 100%);
+  --clr-text: hsl(0, 0%, 100%);
   --edge-size: 1.1em;
   text-transform: uppercase;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1em 8em;
+  padding: 1em 6.5em;
   transition: clip-path 150ms ease;
   clip-path: polygon(var(--edge-size) 0%, 100% 0, 100% calc(100% - var(--edge-size)), calc(100% - var(--edge-size)) 100%, 0 100%, 0% var(--edge-size));
 }
@@ -149,14 +150,14 @@ button {
 
 .cut-corners-border button {
   --f-family: "Montserrat";
-  --f-size: 1.3rem;
+  --f-size: 1.4rem;
   --f-weight: 400;
   --f-spacing: 0.055em;
   --clr-border: hsla(0, 0%, 50%, 0.7);
   --clr-text: hsla(0, 0%, 100%, 0.8);
   --clr-background: hsl(241, 96%, 72%);
   --border-space: -0.35em;
-  --border-edge: 1.5em;
+  --border-edge: 1.8em;
   position: relative;
   display: inline-grid;
   place-items: center;
@@ -175,9 +176,8 @@ button {
   --clr-background: transparentize;
 }
 .cut-corners-border button .content {
-  padding: 1.5em 4em;
+  padding: 1.3em 3.5em;
   text-transform: uppercase;
-  color: var(--clr-text);
   transition: inherit;
 }
 .cut-corners-border button .border {
