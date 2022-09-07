@@ -1,12 +1,17 @@
-const {src, dest, watch, series} = require('gulp');
-const sass = require('gulp-sass')(require('sass'));
+'use strict';
 
-function buildStyles() {
-	return src('./sass/main.scss').pipe(sass()).pipe(dest('css'));
-}
+const gulp = require('gulp');
+const postcssPresetEnv = require('postcss-preset-env');
+const autoprefixer = require("autoprefixer");
+const sourcemaps = require('gulp-sourcemaps')
+const postcss = require('gulp-postcss')
+const cssnano = require('cssnano')
 
-function watchTask() {
-	watch(['./**/*.scss'], buildStyles);
-}
 
-exports.default = series(buildStyles, watchTask);
+gulp.task('production', () => {
+	return gulp.src('./css/*.css')
+		.pipe(sourcemaps.init())
+		.pipe(postcss([autoprefixer, postcssPresetEnv(), cssnano()]))
+		.pipe(sourcemaps.write('.'))
+		.pipe(gulp.dest('./css'))
+})
