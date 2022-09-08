@@ -1,41 +1,124 @@
 
-.follow button {
-	--f-family       : 'Roboto';
-	--f-size         : 1.6rem;
-	--f-weight       : 600;
-	--f-spacing      : 0.125em;
-	--clr-background : #bee3db;
-	--clr-text       : hsl(0, 0%, 100%);
+.follow .btn {
+	$num-of-items            : 4;
+	$delay-for-items         : 70ms;
 
-	display          : inline-grid;
-	place-items      : center;
-	position         : relative;
-	padding          : 2em 8em;
-	isolation        : isolate;
+	--f-family               : 'Roboto';
+	--f-size                 : 1.5rem;
+	--f-weight               : 800;
+	--f-spacing              : 0.125em;
+	--clr-background         : hsl(206, 100%, 50%);
+	--clr-background-content : hsl(216, 100%, 50%);
+	--clr-text               : hsl(0, 0%, 100%);
+	--icon-size              : 1.65em;
+	--radius                 : 0.75em;
+	--translate-X            : 0;
+	--translate-Y            : 0;
+	--transition-ease        : cubic-bezier(0.89, 0.03, 0.06, 1.5);
 
-	overflow         : hidden;
+	position                 : relative;
+	overflow                 : hidden;
+	display                  : inline-grid;
+	place-items              : center;
+	padding                  : 2em 7em;
+
+	&.btn--move-content-top {
+		--translate-Y : -100%
+	}
+
+	&.btn--move-content-bottom {
+		--translate-Y : 100%
+	}
+
+	&.btn--move-content-left {
+		--translate-X : -100%
+	}
+
+	&.btn--move-content-right {
+		--translate-X : 100%
+	}
 
 	&:hover {
+		.btn__content {
+			transform : translate(var(--translate-X), var(--translate-Y));
+		}
 
-		.content {
-			transform : translateX(-100%);
+		.btn__list-item {
+			transform : scale(1);
+			opacity   : 1;
 		}
 	}
 
-	.content {
-		text-transform : uppercase;
-		position       : absolute;
-		background     : #89b0ae;
-		block-size     : 100%;
-		inline-size    : 100%;
-		display        : grid;
-		place-items    : center;
-
-
-		transition     : transform 1000ms cubic-bezier(0.89, 0.03, 0.06, 1.5);
+	:where(&__content, &__list) {
+		inset    : 0;
+		position : absolute;
 	}
 
-	.list {
-		display : flex
+	&__content {
+		border-radius  : inherit;
+		text-transform : uppercase;
+		background     : var(--clr-background-content);
+		display        : grid;
+		place-items    : center;
+		transition     : transform 1000ms var(--transition-ease);
+	}
+
+	&__list {
+		display         : flex;
+		justify-content : space-evenly;
+		align-items     : center;
+	}
+
+	&__list-item {
+		transition : 700ms var(--transition-ease);
+		opacity    : 0;
+		transform  : scale(0);
+	}
+
+	@for $i from 1 through $num-of-items {
+		&__list-item:nth-of-type(#{$i}) {
+			transition-delay : $delay-for-items * $i;
+		}
+	}
+
+	&__list-item svg {
+		fill         : var(--clr-text);
+		width        : var(--icon-size);
+		aspect-ratio : 1;
+		transform    : scale(1);
+		transition   : 400ms var(--transition-ease);
+	}
+
+	&__list-item:hover svg {
+		--clr-text : #ffe347;
+		transform  : scale(1.25);
+	}
+
+	:where(&__side-left, &__side-right) {
+		position    : absolute;
+		inline-size : 2px;
+		block-size  : 100%;
+	}
+
+	:where(&__side-top, &__side-bottom) {
+		position    : absolute;
+		inline-size : 100%;
+		block-size  : 2px;
+	}
+
+	&__side-left {
+		left : 0
+	}
+
+	&__side-right {
+		right : 0
+	}
+
+	&__side-top {
+		top : 0
+	}
+
+	&__side-bottom {
+		bottom : 0
 	}
 }

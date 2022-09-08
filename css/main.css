@@ -118,17 +118,18 @@ body {
   color: rgba(0, 0, 0, 0.03);
 }
 
-button {
+.btn {
   font-family: var(--f-family, sans-serif);
   font-size: var(--f-size, 1rem);
   font-weight: var(--f-weight, 400);
   letter-spacing: var(--f-spacing, 0);
   color: var(--clr-text);
   background-color: var(--clr-background);
+  border-radius: var(--radius, 0);
   line-height: 1;
 }
 
-.cut-corners button {
+.cut-corners .btn {
   --f-family: "Roboto";
   --f-size: 1.1rem;
   --f-weight: 500;
@@ -144,11 +145,11 @@ button {
   transition: clip-path 150ms ease;
   clip-path: polygon(var(--edge-size) 0%, 100% 0, 100% calc(100% - var(--edge-size)), calc(100% - var(--edge-size)) 100%, 0 100%, 0% var(--edge-size));
 }
-.cut-corners button:hover {
+.cut-corners .btn:hover {
   --edge-size: 0%;
 }
 
-.cut-corners-border button {
+.cut-corners-border .btn {
   --f-family: "Montserrat";
   --f-size: 1.4rem;
   --f-weight: 400;
@@ -163,31 +164,31 @@ button {
   place-items: center;
   transition: color 150ms, background-color 100ms ease-in-out;
 }
-.cut-corners-border button:hover {
+.cut-corners-border .btn:hover {
   --border-edge: 0%;
   --clr-text: hsl(0, 0%, 100%);
   --clr-background: hsl(241, 96%, 80%);
 }
-.cut-corners-border button:hover .border::after, .cut-corners-border button:hover .border::before {
+.cut-corners-border .btn:hover .btn__border::after, .cut-corners-border .btn:hover .btn__border::before {
   opacity: 0;
 }
-.cut-corners-border button:active {
+.cut-corners-border .btn:active {
   --border-space: -0.1em;
   --clr-background: transparentize;
 }
-.cut-corners-border button .content {
+.cut-corners-border .btn__content {
   padding: 1.3em 3.5em;
   text-transform: uppercase;
   transition: inherit;
 }
-.cut-corners-border button .border {
+.cut-corners-border .btn__border {
   position: absolute;
   inset: var(--border-space);
   border: 1px solid var(--clr-border);
   transition: clip-path 200ms 0ms, inset 70ms ease-in-out;
   clip-path: polygon(var(--border-edge) 0%, 100% 0, 100% calc(100% - var(--border-edge)), calc(100% - var(--border-edge)) 100%, 0 100%, 0% var(--border-edge));
 }
-.cut-corners-border button .border::before, .cut-corners-border button .border::after {
+.cut-corners-border .btn__border::before, .cut-corners-border .btn__border::after {
   content: "";
   position: absolute;
   inline-size: var(--border-edge);
@@ -197,12 +198,12 @@ button {
   transition: opacity 0ms 110ms;
   opacity: 1;
 }
-.cut-corners-border button .border::before {
+.cut-corners-border .btn__border::before {
   top: -0.3px;
   left: -0.3px;
   clip-path: polygon(0 0, 0% 100%, 100% 0);
 }
-.cut-corners-border button .border::after {
+.cut-corners-border .btn__border::after {
   bottom: 0;
   right: -0.5px;
   clip-path: polygon(100% 0, 0% 100%, 100% 100%);
@@ -212,7 +213,7 @@ button {
   --clr-background: #111111;
 }
 
-.neon button {
+.neon .btn {
   --f-family: "Montserrat";
   --f-size: 3rem;
   --clr-background: transpartent;
@@ -225,14 +226,14 @@ button {
   box-shadow: inset 0 0 0.35em 0 currentColor, 0 0 0.35em 0 currentColor;
   transition: all 60ms linear;
 }
-.neon button:hover, .neon button:focus-visible {
+.neon .btn:hover, .neon .btn:focus-visible {
   text-shadow: 0 0 0.3em currentColor, 0 0 0.6em hsla(0deg, 0%, 100%, 0.45);
   box-shadow: inset 0 0 1em 0 currentColor, 0 0 0.7em 0 currentColor;
 }
-.neon button:hover::before, .neon button:focus-visible::before {
+.neon .btn:hover::before, .neon .btn:focus-visible::before {
   opacity: 0.9;
 }
-.neon button::before {
+.neon .btn::before {
   content: "";
   pointer-events: none;
   position: absolute;
@@ -247,35 +248,110 @@ button {
   transition: all 60ms linear;
 }
 
-.follow button {
+.follow .btn {
   --f-family: "Roboto";
-  --f-size: 1.6rem;
-  --f-weight: 600;
+  --f-size: 1.5rem;
+  --f-weight: 800;
   --f-spacing: 0.125em;
-  --clr-background: #bee3db;
+  --clr-background: hsl(206, 100%, 50%);
+  --clr-background-content: hsl(216, 100%, 50%);
   --clr-text: hsl(0, 0%, 100%);
+  --icon-size: 1.65em;
+  --radius: 0.75em;
+  --translate-X: 0;
+  --translate-Y: 0;
+  --transition-ease: cubic-bezier(0.89, 0.03, 0.06, 1.5);
+  position: relative;
+  overflow: hidden;
   display: inline-grid;
   place-items: center;
-  position: relative;
-  padding: 2em 8em;
-  isolation: isolate;
-  overflow: hidden;
+  padding: 2em 7em;
 }
-.follow button:hover .content {
-  transform: translateX(-100%);
+.follow .btn.btn--move-content-top {
+  --translate-Y: -100% ;
 }
-.follow button .content {
-  text-transform: uppercase;
+.follow .btn.btn--move-content-bottom {
+  --translate-Y: 100% ;
+}
+.follow .btn.btn--move-content-left {
+  --translate-X: -100% ;
+}
+.follow .btn.btn--move-content-right {
+  --translate-X: 100% ;
+}
+.follow .btn:hover .btn__content {
+  transform: translate(var(--translate-X), var(--translate-Y));
+}
+.follow .btn:hover .btn__list-item {
+  transform: scale(1);
+  opacity: 1;
+}
+:where(.follow .btn__content, .follow .btn__list) {
+  inset: 0;
   position: absolute;
-  background: #89b0ae;
-  block-size: 100%;
-  inline-size: 100%;
+}
+.follow .btn__content {
+  border-radius: inherit;
+  text-transform: uppercase;
+  background: var(--clr-background-content);
   display: grid;
   place-items: center;
-  transition: transform 1000ms cubic-bezier(0.89, 0.03, 0.06, 1.5);
+  transition: transform 1000ms var(--transition-ease);
 }
-.follow button .list {
+.follow .btn__list {
   display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.follow .btn__list-item {
+  transition: 700ms var(--transition-ease);
+  opacity: 0;
+  transform: scale(0);
+}
+.follow .btn__list-item:nth-of-type(1) {
+  transition-delay: 70ms;
+}
+.follow .btn__list-item:nth-of-type(2) {
+  transition-delay: 140ms;
+}
+.follow .btn__list-item:nth-of-type(3) {
+  transition-delay: 210ms;
+}
+.follow .btn__list-item:nth-of-type(4) {
+  transition-delay: 280ms;
+}
+.follow .btn__list-item svg {
+  fill: var(--clr-text);
+  width: var(--icon-size);
+  aspect-ratio: 1;
+  transform: scale(1);
+  transition: 400ms var(--transition-ease);
+}
+.follow .btn__list-item:hover svg {
+  --clr-text: #ffe347;
+  transform: scale(1.25);
+}
+:where(.follow .btn__side-left, .follow .btn__side-right) {
+  position: absolute;
+  inline-size: 2px;
+  block-size: 100%;
+}
+:where(.follow .btn__side-top, .follow .btn__side-bottom) {
+  position: absolute;
+  inline-size: 100%;
+  block-size: 2px;
+}
+.follow .btn__side-left {
+  left: 0;
+}
+.follow .btn__side-right {
+  right: 0;
+}
+.follow .btn__side-top {
+  top: 0;
+}
+.follow .btn__side-bottom {
+  bottom: 0;
 }
 
 /*# sourceMappingURL=main.css.map */

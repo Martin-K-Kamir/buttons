@@ -1,5 +1,5 @@
 
-.cut-corners-border button {
+.cut-corners-border .btn {
 	--f-family       : 'Montserrat';
 	--f-size         : 1.4rem;
 	--f-weight       : 400;
@@ -20,8 +20,8 @@
 		--clr-text       : hsl(0, 0%, 100%);
 		--clr-background : hsl(241, 96%, 80%);
 
-		& .border::after,
-		& .border::before, {
+		& .btn__border::after,
+		& .btn__border::before, {
 			opacity : 0;
 		}
 	}
@@ -31,13 +31,13 @@
 		--clr-background : transparentize;
 	}
 
-	.content {
+	&__content {
 		padding        : 1.3em 3.5em;
 		text-transform : uppercase;
 		transition     : inherit;
 	}
 
-	.border {
+	&__border {
 		position   : absolute;
 		inset      : var(--border-space);
 		border     : 1px solid var(--clr-border);
