@@ -109,6 +109,11 @@ body {
   grid-template-areas: "stack";
 }
 
+.columns {
+  display: flex;
+  gap: 3rem;
+}
+
 .order {
   position: absolute;
   user-select: none;
@@ -116,6 +121,7 @@ body {
   font-size: 90rem;
   font-weight: 900;
   color: rgba(0, 0, 0, 0.03);
+  pointer-events: none;
 }
 
 .btn {
@@ -352,6 +358,121 @@ body {
 }
 .follow .btn__side-bottom {
   bottom: 0;
+}
+
+.hamburger .btn {
+  --_weight: var(--stroke, 0.5em);
+  --_size: var(--size, 7em);
+  --_fg: var(--fg, #F20568);
+  --_transition-duration: 150ms;
+  --_transition-timing: ease-in;
+  border: var(--_weight) solid var(--_fg);
+  border-radius: 0.4em;
+}
+.hamburger .btn svg {
+  inline-size: var(--_size);
+  block-size: var(--_size);
+}
+
+.hamburger .btn:nth-child(1) svg {
+  fill: var(--_fg);
+}
+.hamburger .btn:nth-child(1) rect {
+  block-size: calc(var(--_weight) * 2);
+  transform-origin: center;
+  transition: y var(--_transition-duration) var(--_transition-timing) var(--_transition-duration), rotate var(--_transition-duration) var(--_transition-timing), opacity 0ms var(--_transition-duration);
+}
+.hamburger .btn:nth-child(1):hover rect {
+  transition: y var(--_transition-duration) var(--_transition-timing), rotate var(--_transition-duration) var(--_transition-timing) var(--_transition-duration), opacity 0ms var(--_transition-duration);
+}
+.hamburger .btn:nth-child(1):hover rect:where(:first-child, :last-child) {
+  y: 45;
+}
+.hamburger .btn:nth-child(1):hover rect:first-child {
+  rotate: 45deg;
+}
+.hamburger .btn:nth-child(1):hover rect:not(:first-child):not(:last-child) {
+  opacity: 0;
+}
+.hamburger .btn:nth-child(1):hover rect:last-child {
+  rotate: -45deg;
+}
+
+.hamburger .btn:nth-child(2) {
+  --fg: #F2B705;
+}
+.hamburger .btn:nth-child(2) svg {
+  stroke: var(--_fg);
+  transition: rotate 1s;
+}
+.hamburger .btn:nth-child(2):hover svg {
+  rotate: 0.5turn;
+}
+.hamburger .btn:nth-child(2) line {
+  animation: to-open-icon 1s forwards;
+}
+.hamburger .btn:nth-child(2) line:first-child {
+  --_rotation: -45deg;
+  transform-origin: 65px 45px;
+}
+.hamburger .btn:nth-child(2) line:last-child {
+  --_rotation: 45deg;
+  transform-origin: 60px 55px;
+}
+.hamburger .btn:nth-child(2):hover line {
+  animation: to-close-icon 1s forwards;
+}
+@keyframes to-close-icon {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  40% {
+    stroke-dashoffset: 79.9;
+  }
+  60% {
+    stroke-dashoffset: 79.9;
+    rotate: var(--_rotation);
+  }
+  100% {
+    stroke-dashoffset: 0;
+    rotate: var(--_rotation);
+  }
+}
+@keyframes to-open-icon {
+  0% {
+    stroke-dashoffset: 0;
+    rotate: var(--_rotation);
+  }
+  40% {
+    stroke-dashoffset: 79.9;
+    rotate: var(--_rotation);
+  }
+  60% {
+    stroke-dashoffset: 79.9;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.hamburger .btn:nth-child(3) {
+  --fg: #05F250;
+}
+.hamburger .btn:nth-child(3) svg {
+  stroke: var(--_fg);
+  transition: translate 1s, rotate 1s;
+}
+.hamburger .btn:nth-child(3):hover svg {
+  translate: 5px -5px;
+  rotate: 0.125turn;
+}
+.hamburger .btn:nth-child(3) path {
+  stroke-dasharray: 60 30 60 1000;
+  transition: 1s;
+}
+.hamburger .btn:nth-child(3):hover path {
+  stroke-dasharray: 60 105 60 1000;
+  stroke-dashoffset: -90;
 }
 
 /*# sourceMappingURL=main.css.map */

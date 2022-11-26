@@ -17,16 +17,22 @@ body {
 	background-color    : var(--clr-background, #222222);
 	display             : grid;
 	place-items         : center;
-	grid-template-areas : "stack";
+	grid-template-areas : 'stack';
+}
+
+.columns {
+	display: flex;
+	gap: 3rem;
 }
 
 .order {
-	position    : absolute;
-	user-select : none;
-	font-family : 'Share Tech Mono', monospace;
-	font-size   : 90rem;
-	font-weight : 900;
-	color       : rgba(0, 0, 0, 0.03);
+	position       : absolute;
+	user-select    : none;
+	font-family    : 'Share Tech Mono', monospace;
+	font-size      : 90rem;
+	font-weight    : 900;
+	color          : rgba(0, 0, 0, 0.03);
+	pointer-events : none;
 }
 
 .btn {
