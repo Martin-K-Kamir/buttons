@@ -1,0 +1,95 @@
+
+.circles-container {
+	--_container-size : var(--container-size, 25rem);
+	--_btn-size       : var(--btn-size, 7rem);
+	--_circle-size    : calc(var(--_btn-size) / 1.75);
+	--_bg             : var(--bg, hsla(0, 0%, 94%));
+	--_fg             : var(--fg, #111111);
+
+	position          : relative;
+	inline-size       : var(--_container-size);
+	block-size        : var(--_container-size);
+	display           : grid;
+	place-items       : center;
+}
+
+.circles .btn {
+	position         : relative;
+	inline-size      : var(--_btn-size);
+	block-size       : var(--_btn-size);
+	background-color : var(--_bg);
+	color            : var(--_fg);
+	border-radius    : 50%;
+	transition       : rotate 1000ms;
+
+	display          : grid;
+	place-items      : center;
+
+	&.active {
+		rotate : 1turn;
+	}
+
+	svg {
+		translate   : 4% 0; // looks more centered
+		inline-size : 60%;
+		block-size  : 60%;
+		color       : inherit;
+		fill        : currentColor;
+	}
+}
+
+.circles .list {
+	list-style : none;
+	position   : absolute;
+	left       : calc(50% - var(--_circle-size) / 2);
+
+	li {
+		position   : absolute;
+		left       : 0;
+		transition : rotate 0.5s ease-out, scale 0.4s ease-out;
+		translate  : 0 -50%;
+		rotate     : calc(360deg / 8 * var(--i));
+		scale      : 0;
+
+		animation  : spin 40s infinite linear;
+
+		@keyframes spin {
+			0% {
+				transform : rotate(0turn) translateY(calc(var(--_container-size) / 2 * -1)) translateY(50%) rotate(1turn);
+			}
+			100% {
+				transform : rotate(1turn) translateY(calc(var(--_container-size) / 2 * -1)) translateY(50%) rotate(0turn);
+			}
+		}
+	}
+
+	li:hover {
+		--_bg : var(--clr);
+	}
+
+	a {
+		display       : grid;
+		place-items   : center;
+		rotate        : calc(360deg / -8 * var(--i));
+		background-color    : var(--_bg);
+		color         : var(--_fg);
+		inline-size   : var(--_circle-size);
+		block-size    : var(--_circle-size);
+		border-radius : 50%;
+	}
+
+	svg {
+		color : inherit;
+		fill  : currentColor;
+	}
+}
+
+.circles:has(.active) li {
+	transition-delay : calc(0.5s / 8 * var(--i));
+	scale            : 1;
+}
+
+// doesnt work very well. Fixed with JS
+.circles:has(li:hover) li {
+	//animation-play-state : paused !important;
+}
