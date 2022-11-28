@@ -68,14 +68,14 @@
 	}
 
 	a {
-		display       : grid;
-		place-items   : center;
-		rotate        : calc(360deg / -8 * var(--i));
-		background-color    : var(--_bg);
-		color         : var(--_fg);
-		inline-size   : var(--_circle-size);
-		block-size    : var(--_circle-size);
-		border-radius : 50%;
+		display          : grid;
+		place-items      : center;
+		rotate           : calc(360deg / -8 * var(--i));
+		background-color : var(--_bg);
+		color            : var(--_fg);
+		inline-size      : var(--_circle-size);
+		block-size       : var(--_circle-size);
+		border-radius    : 50%;
 	}
 
 	svg {

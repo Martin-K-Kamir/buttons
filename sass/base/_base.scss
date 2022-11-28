@@ -45,3 +45,15 @@ body {
 	border-radius    : var(--radius, 0);
 	line-height      : 1;
 }
+
+.sr-only {
+	position    : absolute;
+	overflow    : hidden;
+	margin      : -1px;
+	padding     : 0;
+	width       : 1px;
+	height      : 1px;
+	white-space : nowrap;
+	clip        : rect(0, 0, 0, 0);
+	border      : 0;
+}

@@ -1,0 +1,72 @@
+.toggle {
+	--clr-background : #E6E6E6;
+}
+
+.toggle .btn {
+	--_size            : var(--size, 1.6rem);
+	--_block-size      : 2.5em;
+	--_inline-size     : var(--inline-size, 4.5em);
+	--_handle-size     : calc(var(--_block-size) / 1.5);
+	--_max-inline-size : max(var(--_inline-size), var(--_block-size) * 1.5);
+	--_inline-space    : calc(var(--_block-size) / 5);
+	--_translate       : 0 0;
+	--_speed           : var(--speed, 200ms);
+	--_bg-default      : var(--bg-default, #232323);
+	--_fg-default      : var(--fg-default, #E6E6E6);
+	--_bg-active       : var(--bg-active, var(--_bg-default));
+	--_fg-active       : var(--fg-active, var(--_fg-default));
+	--_bg              : var(--_bg-default);
+	--_fg              : var(--_fg-default);
+
+	position           : relative;
+	display            : grid;
+	align-items        : center;
+	font-size          : var(--_size);
+	padding            : 0 var(--_inline-space);
+	inline-size        : var(--_max-inline-size);
+	block-size         : var(--_block-size);
+	background-color   : var(--_bg);
+	border-radius      : 100vmax;
+	transition         : background-color var(--_speed) ease-in-out;
+
+	&[data-toggle-colors='true'] {
+		--_bg-active : var(--_fg-default);
+		--_fg-active : var(--_bg-default);
+	}
+
+	&[aria-pressed='true'] {
+		--_translate : calc(var(--_max-inline-size) - var(--_handle-size) - (var(--_inline-space) * 2)) 0;
+		--_bg        : var(--_bg-active);
+		--_fg        : var(--_fg-active);
+	}
+
+	&__handle {
+		display          : grid;
+		place-items      : center;
+		inline-size      : var(--_handle-size);
+		aspect-ratio     : 1;
+		border-radius    : 50%;
+		background-color : var(--_fg);
+		translate        : var(--_translate);
+		transition       : translate var(--_speed) ease-in-out, background-color var(--_speed) ease-in-out;
+	}
+
+	.icon {
+		width  : 50%;
+		height : 50%;
+	}
+}
+
+#sun-and-moon-1 {
+	position      : relative;
+	display       : grid;
+	justify-items : center;
+
+	.circle {
+		position         : absolute;
+		width            : 100%;
+		height           : 100%;
+		background-color : var(--_bg);
+		border-radius    : 50%;
+	}
+}
