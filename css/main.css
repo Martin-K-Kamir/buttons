@@ -569,10 +569,14 @@ body {
 
 .toggle {
   --clr-background: #E6E6E6;
+  transition: background-color 200ms ease-in-out;
+}
+.toggle:has(.btn[aria-pressed=true]) {
+  --clr-background: #222222;
 }
 
 .toggle .btn {
-  --_size: var(--size, 1.6rem);
+  --_size: var(--size, 1.4rem);
   --_block-size: 2.5em;
   --_inline-size: var(--inline-size, 4.5em);
   --_handle-size: calc(var(--_block-size) / 1.5);
@@ -580,7 +584,7 @@ body {
   --_inline-space: calc(var(--_block-size) / 5);
   --_translate: 0 0;
   --_speed: var(--speed, 200ms);
-  --_bg-default: var(--bg-default, #232323);
+  --_bg-default: var(--bg-default, #444444);
   --_fg-default: var(--fg-default, #E6E6E6);
   --_bg-active: var(--bg-active, var(--_bg-default));
   --_fg-active: var(--fg-active, var(--_fg-default));
@@ -621,17 +625,22 @@ body {
   height: 50%;
 }
 
-#sun-and-moon-1 {
+#toggle-1 .btn__handle {
   position: relative;
-  display: grid;
-  justify-items: center;
 }
-#sun-and-moon-1 .circle {
+#toggle-1 .btn__handle::after {
+  content: "";
   position: absolute;
-  width: 100%;
-  height: 100%;
+  inset: 10%;
+  translate: -30% -30%;
+  scale: 0;
   background-color: var(--_bg);
   border-radius: 50%;
+  transition: scale var(--_speed) ease-in-out;
+  transform-origin: 10% 45%;
+}
+#toggle-1[aria-pressed=true] .btn__handle::after {
+  scale: 1;
 }
 
 /*# sourceMappingURL=main.css.map */
