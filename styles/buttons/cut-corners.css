@@ -1,0 +1,28 @@
+.cut-corners .btn {
+    --f-family: "Roboto";
+    --f-size: 1.1rem;
+    --f-weight: 500;
+    --f-spacing: 0.095em;
+    --clr-background: hsl(39, 55%, 59%);
+    --clr-text: hsl(0, 0%, 100%);
+    --edge-size: 1.1em;
+
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em 6.5em;
+    transition: clip-path 150ms ease;
+    clip-path: polygon(
+        var(--edge-size) 0%,
+        100% 0,
+        100% calc(100% - var(--edge-size)),
+        calc(100% - var(--edge-size)) 100%,
+        0 100%,
+        0% var(--edge-size)
+    );
+
+    &:hover {
+        --edge-size: 0%;
+    }
+}

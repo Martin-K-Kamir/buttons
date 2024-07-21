@@ -1,0 +1,77 @@
+.cut-corners-border .btn {
+    --f-family: "Montserrat";
+    --f-size: 1.4rem;
+    --f-weight: 400;
+    --f-spacing: 0.055em;
+    --clr-border: hsla(0, 0%, 50%, 0.7);
+    --clr-text: hsla(0, 0%, 100%, 0.8);
+    --clr-background: hsl(241, 96%, 72%);
+    --border-space: -0.35em;
+    --border-edge: 1.8em;
+
+    position: relative;
+    display: inline-grid;
+    place-items: center;
+    transition: color 150ms, background-color 100ms ease-in-out;
+
+    &:hover {
+        --border-edge: 0%;
+        --clr-text: hsl(0, 0%, 100%);
+        --clr-background: hsl(241, 96%, 80%);
+
+        & .btn__border::after,
+        & .btn__border::before {
+            opacity: 0;
+        }
+    }
+
+    &:active {
+        --border-space: -0.1em;
+        --clr-background: transparentize;
+    }
+
+    &__content {
+        padding: 1.3em 3.5em;
+        text-transform: uppercase;
+        transition: inherit;
+    }
+
+    &__border {
+        position: absolute;
+        inset: var(--border-space);
+        border: 1px solid var(--clr-border);
+        transition: clip-path 200ms 0ms, inset 70ms ease-in-out;
+        clip-path: polygon(
+            var(--border-edge) 0%,
+            100% 0,
+            100% calc(100% - var(--border-edge)),
+            calc(100% - var(--border-edge)) 100%,
+            0 100%,
+            0% var(--border-edge)
+        );
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            inline-size: var(--border-edge);
+            aspect-ratio: 1 / 1;
+            display: block;
+            background-color: var(--clr-border);
+            transition: opacity 0ms 110ms;
+            opacity: 1;
+        }
+
+        &::before {
+            top: -0.3px;
+            left: -0.3px;
+            clip-path: polygon(0 0, 0% 100%, 100% 0);
+        }
+
+        &::after {
+            bottom: 0;
+            right: -0.5px;
+            clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+        }
+    }
+}
