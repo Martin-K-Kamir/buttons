@@ -1,5 +1,7 @@
-# 100 Buttons
+# 🎯 100 Buttons Challenge
 
-Hello and welcome to my repository of 100 cool buttons challenge! Currently, I am at `6` buttons.
+Welcome to the 100 Buttons Challenge — a personal project where I aim to recreate and design 100 unique CSS and animation buttons. Some are inspired by buttons I've come across, while others are original creations.
 
-- Live Site URL - [Link](https://buttons-martin-kamir.netlify.app/)
+📦 Current progress: 6 / 100 buttons complete
+
+🌐 Live Preview: [buttons-mkk.netlify.app](https://buttons-mkk.netlify.app/)
